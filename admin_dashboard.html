@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, Admin</h1>
+
+        <h2>Login Requests</h2>
+        <ul>
+            {% for username in login_requests %}
+                <li>{{ username }} 
+                    <a href="{{ url_for('approve_request', username=username) }}">Approve</a> |
+                    <a href="{{ url_for('reject_request', username=username) }}">Reject</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a href="/">Logout</a>
+    </div>
+</body>
+</html>
